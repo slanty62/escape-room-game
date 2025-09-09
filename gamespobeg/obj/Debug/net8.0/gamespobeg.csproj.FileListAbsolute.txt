@@ -1,0 +1,14 @@
+C:\Users\facei\example\src\gamespobeg\bin\Debug\net8.0\gamespobeg.exe
+C:\Users\facei\example\src\gamespobeg\bin\Debug\net8.0\gamespobeg.deps.json
+C:\Users\facei\example\src\gamespobeg\bin\Debug\net8.0\gamespobeg.runtimeconfig.json
+C:\Users\facei\example\src\gamespobeg\bin\Debug\net8.0\gamespobeg.dll
+C:\Users\facei\example\src\gamespobeg\bin\Debug\net8.0\gamespobeg.pdb
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.AssemblyInfoInputs.cache
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.AssemblyInfo.cs
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.csproj.CoreCompileInputs.cache
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.dll
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\refint\gamespobeg.dll
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.pdb
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\gamespobeg.genruntimeconfig.cache
+C:\Users\facei\example\src\gamespobeg\obj\Debug\net8.0\ref\gamespobeg.dll
