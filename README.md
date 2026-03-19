@@ -1,90 +1,71 @@
-# escape-room-game
-Разработка мини-игры
-![d632d4bbf773302c4f3c95cf4224841f](https://github.com/user-attachments/assets/bf25fa3a-2591-461c-bcb0-2dd1fe985f5b)
-
-
 using CarRental.Core.Models;
 using CarRental.Core.Validation;
 
 namespace CarRental.Core.Migration;
 
-public static class CarNormalizer
+public static class RentalNormalizer
 {
-    public static bool Normalize(Car car)
+    public static bool Normalize(Rental rental)
     {
         bool changed = false;
 
-        // Проверка Brand
-        if (car.Brand == null)
+        // Проверка CustomerName
+        if (rental.CustomerName == null)
         {
-            car.Brand = "";
+            rental.CustomerName = "";
             changed = true;
         }
         
-        var brandTrim = car.Brand.Trim();
-        if (brandTrim != car.Brand)
+        var nameTrim = rental.CustomerName.Trim();
+        if (nameTrim != rental.CustomerName)
         {
-            car.Brand = brandTrim;
+            rental.CustomerName = nameTrim;
             changed = true;
         }
         
-        if (car.Brand.Length > CarValidator.BrandMaxLength)
+        if (rental.CustomerName.Length > CarValidator.CustomerNameMaxLength)
         {
-            car.Brand = car.Brand.Substring(0, CarValidator.BrandMaxLength);
+            rental.CustomerName = rental.CustomerName.Substring(0, CarValidator.CustomerNameMaxLength);
             changed = true;
         }
 
-        // Проверка Model
-        if (car.Model == null)
+        // Проверка CustomerPhone
+        if (rental.CustomerPhone == null)
         {
-            car.Model = "";
+            rental.CustomerPhone = "";
             changed = true;
         }
         
-        var modelTrim = car.Model.Trim();
-        if (modelTrim != car.Model)
+        var phoneTrim = rental.CustomerPhone.Trim();
+        if (phoneTrim != rental.CustomerPhone)
         {
-            car.Model = modelTrim;
+            rental.CustomerPhone = phoneTrim;
             changed = true;
         }
         
-        if (car.Model.Length > CarValidator.ModelMaxLength)
+        if (rental.CustomerPhone.Length > CarValidator.CustomerPhoneMaxLength)
         {
-            car.Model = car.Model.Substring(0, CarValidator.ModelMaxLength);
+            rental.CustomerPhone = rental.CustomerPhone.Substring(0, CarValidator.CustomerPhoneMaxLength);
             changed = true;
         }
 
-        // Проверка LicensePlate
-        if (car.LicensePlate == null)
+        // Проверка дат (если дата в прошлом, ставим сегодня)
+        if (rental.StartDate < DateTime.Today)
         {
-            car.LicensePlate = "";
+            rental.StartDate = DateTime.Today;
             changed = true;
         }
         
-        var plateTrim = car.LicensePlate.Trim().ToUpper();
-        if (plateTrim != car.LicensePlate)
+        if (rental.EndDate <= rental.StartDate)
         {
-            car.LicensePlate = plateTrim;
-            changed = true;
-        }
-        
-        if (car.LicensePlate.Length > CarValidator.LicensePlateMaxLength)
-        {
-            car.LicensePlate = car.LicensePlate.Substring(0, CarValidator.LicensePlateMaxLength);
+            rental.EndDate = rental.StartDate.AddDays(1);
             changed = true;
         }
 
-        // Проверка Year (если год некорректный, ставим текущий)
-        if (car.Year < 2000 || car.Year > DateTime.Now.Year + 1)
+        // Пересчет TotalPrice если нужно
+        if (rental.TotalPrice <= 0)
         {
-            car.Year = DateTime.Now.Year;
-            changed = true;
-        }
-
-        // Проверка RentalPricePerDay (если цена <= 0, ставим 1000)
-        if (car.RentalPricePerDay <= 0)
-        {
-            car.RentalPricePerDay = 1000;
+            rental.TotalPrice = 1000;
             changed = true;
         }
 
